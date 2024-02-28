@@ -30,7 +30,8 @@ public class LogoutSteps extends Setup {
     }
 
     @Then("user will be on home page")
-    public void  user_will_be_on_home_page(){
+    public void  user_will_be_on_home_page() throws InterruptedException {
+        Thread.sleep(7000);
         Assert.assertTrue(commonFunctions.getCurrentURL(prop.getProperty("URL")));
     }
 

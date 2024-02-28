@@ -31,7 +31,8 @@ public class SearchEngineSteps extends Setup {
     }
 
     @Then("all services related to the keyword will be displayed for the user {string}")
-    public void all_services_realated_to_the_keyword_will_be_displayed_for_the_user(String searchKeyword){
+    public void all_services_realated_to_the_keyword_will_be_displayed_for_the_user(String searchKeyword) throws InterruptedException {
+        Thread.sleep(3000);
         Assert.assertTrue(homePageFunctions.isSearchResultsRelated(homePageVariables.searchResults, searchKeyword));
     }
 

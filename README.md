@@ -52,33 +52,31 @@ This framework provides a structured approach to implement Behavior-Driven Devel
 
 │       │   └── steps packages/
 
-│       │       └── steps defenitoin classes  #(features steps classes and the hooks class that contain the tags needed like @before or @after ,.... for each test cases execution)
+│       │       └── steps definition classes  #(features steps classes and the hooks class that contain the tags needed like @before or @after ,.... for each test cases execution)
 
 |       |    └── bases classes/
 
-│       │       └── basses classes defenition  #(define the business classes , the common classes that interact with the web elements)
+│       │       └── basses classes definition  #(define the business classes , the common classes that interact with the web elements)
 
 |       |    └── bases setup package/
 
 │       │       └── setup.java    #(initialize the framework and the web driver for multiple browsers)
 
-|       |       └── utils.java   #(support class contain helper functions defenition)
+|       |       └── utils.java   #(support class contain helper functions definition)
 
 |       |    └── config package/
 
-│       │       └── config_file.properties  #(define the url for the web application with the pathes for the multiple web drivers)
+│       │       └── config_file.properties  #(define the url for the web application with the report path)
 
 |       |    └── runners package/
 
-│       │       └── runners file defenition   #(define which feature file to be executed and the tag name with the steps defenition path)
+│       │       └── runners file definition   #(define which feature file to be executed and the tag name with the steps defenition path)
 
 |       |    └── ui features/
 
-│       │       └── features files  #(contian the scenario decleration using gerkins )
+│       │       └── features files  #(contain the scenario declaration using gherkins )
 
 │       └── resources/
-
-│           └── browsers web drives files #( executables web drivers files multiple browsers testing )
 
 │               
 ├── pom.xml         #(define the maven dependencies)
@@ -94,6 +92,6 @@ This framework provides a structured approach to implement Behavior-Driven Devel
 ## Notes 
 1. for Read excel data , you can find the function for get the excel data in Utils class with all the calls needed in the setup class for that data-driven testing.
 2. for each browser web driver , there is test runner targeting the tag defined in the feature file , so we need to un-comment the call for the test runner in tetng.xml file ,  before run the framework if we need to run on multiple browser
-3. after the execution is completed , you can find the resuslts in the Report/ with screen shoots attached to each test case 
+3. after the execution is completed , you can find the results in the Report/ with screen shoots attached to each test case 
   
 

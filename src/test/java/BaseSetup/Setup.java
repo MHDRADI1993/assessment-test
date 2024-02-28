@@ -4,6 +4,7 @@ import BaseClasses.*;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -15,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -49,38 +51,23 @@ public class Setup {
     }
 
     public static void initialization (String browser) throws FileNotFoundException, IOException {
-
-
-        if (browser.equalsIgnoreCase("firefox") && System.getProperty("os.name").startsWith("Mac OS")) {
-            System.setProperty("webdriver.gecko.driver", prop.getProperty("FirefoxWebdriverPathMac"));
-            driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("firefox") && System.getProperty("os.name").startsWith("Windows")) {
-            System.setProperty("webdriver.chrome.driver", prop.getProperty("FirefoxWebdriverPathWindows"));
-            driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("firefox") && System.getProperty("os.name").contains("Linux")) {
-            System.setProperty("webdriver.gecko.driver", prop.getProperty("FirefoxWebdriverPathLinux"));
-            driver = new FirefoxDriver();
-        }else if (browser.equalsIgnoreCase("chrome") && System.getProperty("os.name").startsWith("Windows")) {
-            System.setProperty("webdriver.chrome.driver", prop.getProperty("ChromeWebdriverPathWindows"));
-            driver = new ChromeDriver();
-        }else if (browser.equalsIgnoreCase("chrome") && System.getProperty("os.name").contains("Linux")) {
-            System.setProperty("webdriver.gecko.driver", prop.getProperty("ChromeWebdriverPathLinux"));
-            driver = new ChromeDriver();;
-        }else if (browser.equalsIgnoreCase("chrome") && System.getProperty("os.name").startsWith("Mac OS")) {
-            System.setProperty("webdriver.chrome.driver", prop.getProperty("ChromeWebdriverPathMac"));
-            driver = new ChromeDriver();
-        }else if (browser.equalsIgnoreCase("edge") && System.getProperty("os.name").startsWith("Windows")) {
-            System.setProperty("webdriver.edge.driver", prop.getProperty("EdgeWebdriverPathWindows"));
-            driver = new EdgeDriver();
-        }else if (browser.equalsIgnoreCase("edge") && System.getProperty("os.name").contains("Linux")) {
-            System.setProperty("webdriver.edge.driver", prop.getProperty("EdgeWebdriverPathLinux"));
-            driver = new EdgeDriver();
-        }else if (browser.equalsIgnoreCase("edge") && System.getProperty("os.name").startsWith("Mac OS")) {
-            System.setProperty("webdriver.edge.driver", prop.getProperty("EdgeWebdriverPathMac"));
-            driver = new EdgeDriver();
+        switch (browser) {
+            case "chrome" -> {
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+            }
+            case "edge" -> {
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+            }
+            default -> {
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+            }
         }
+
         driver.get(prop.getProperty("URL"));
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 }

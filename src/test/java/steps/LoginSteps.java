@@ -53,12 +53,13 @@ public class LoginSteps extends Setup {
     }
     @Then("user will be on the dashboard {string}")
     public void user_will_be_on_the_dashboard(String dashboardLink) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         Assert.assertTrue(commonFunctions.getCurrentURL(dashboardLink) , "Actual Url same as Expected Url");
 
     }
     @And ("will see the logged user name displayed as {string}")
-    public void will_see_the_logged_user_name_displayed(String dashboardWelcomeMessage){
+    public void will_see_the_logged_user_name_displayed(String dashboardWelcomeMessage) throws InterruptedException {
+        Thread.sleep(3000);
         commonFunctions.isElementDisplayed(dashboardVariables.welcomeMessage ,dashboardWelcomeMessage );
 
     }
