@@ -19,7 +19,7 @@ This framework provides a structured approach to implement Behavior-Driven Devel
 
 2. **Clone the Repository:**
    ```bash
-   git clone https://github.com/MHDRADI1993/dm-assessment-test.git
+   git clone https://github.com/MHDRADI1993/assessment-test.git
 
 ## build the project 
   cd {path of the BDD framework} after clone
@@ -40,7 +40,7 @@ This framework provides a structured approach to implement Behavior-Driven Devel
 
 ├── src/
 
-│   ├── main/
+│   ├── main
 
 │   │   ├── java/   #(source files)
 

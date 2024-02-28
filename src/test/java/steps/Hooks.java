@@ -64,7 +64,7 @@ public class Hooks extends Setup {
     @BeforeAll
     public static void initiate() throws IOException {
         prop = new Properties();
-        FileInputStream fis = new FileInputStream("./src/test/java/Config/config.properties");
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/java/Config/config.properties");
         prop.load(fis);
         //excelData = Utils.getExcelData(prop.getProperty("ExcelSheetName"));
         htmlReporter = new ExtentHtmlReporter(prop.getProperty("ResultsReportPath"));

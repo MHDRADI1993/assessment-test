@@ -44,7 +44,7 @@ public class Setup {
 
     public Setup() throws IOException {
         prop = new Properties();
-        FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+ "./src/test/java/Config/config.properties");
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+ "/src/test/java/Config/config.properties");
         prop.load(fis);
     }
 
