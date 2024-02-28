@@ -35,34 +35,39 @@ This framework provides a structured approach to implement Behavior-Driven Devel
    - Execute the TestNG.xml file directly, so will trigger the test runners classes
 
 ## Structure 
-1. bdd-framework/
-├── Report/ 
+bdd-framework/
+├── Report/
 ├── src/
 │   ├── main/
-│   │   ├── java/   #(source files)
-│   │   └── resources/  #(resource files)
+│   │   ├── java/                     # Source files
+│   │   │   ├── bases/                # Base classes
+│   │   │   │   └── bases classes definition (define the business classes, common classes interacting with web elements)
+│   │   │   ├── bases_setup/          # Setup classes
+│   │   │   │   └── setup.java (initialize the framework and the web driver for multiple browsers)
+│   │   │   ├── config/               # Configuration files
+│   │   │   │   └── config_file.properties (define the URL for the web application with the paths for the multiple web drivers)
+│   │   │   ├── runners/              # Test runners
+│   │   │   │   └── runners file definition (define which feature file to be executed and the tag name with the steps definition path)
+│   │   │   ├── steps/                # Step definition classes
+│   │   │   │   └── steps definition classes (features steps classes and the hooks class that contain the tags needed like @before or @after, for each test cases execution)
+│   │   │   ├── utils.java            # Support class containing helper functions definition
+│   │   │   └── (source files)
+│   │   └── resources/                # Resource files
+│   │       ├── browsers/            # Web driver files for multiple browsers testing
+│   │       │   └── web drivers files (executable web driver files)
+│   │       └── (resource files)
 │   └── test/
-│       ├── java/
-│       │   └── steps packages/
-│       │       └── steps defenitoin classes  #(features steps classes and the hooks class that contain the tags needed like @before or @after ,.... for each test cases execution)
-|       |    └── bases classes/
-│       │       └── basses classes defenition  #(define the business classes , the common classes that interact with the web elements)
-|       |    └── bases setup package/
-│       │       └── setup.java    #(initialize the framework and the web driver for multiple browsers)
-|       |       └── utils.java   #(support class contain helper functions defenition)
-|       |    └── config package/
-│       │       └── config_file.properties  #(define the url for the web application with the pathes for the multiple web drivers)
-|       |    └── runners package/
-│       │       └── runners file defenition   #(define which feature file to be executed and the tag name with the steps defenition path)
-|       |    └── ui features/
-│       │       └── features files  #(contian the scenario decleration using gerkins )
-│       └── resources/
-│           └── browsers web drives files #( executables web drivers files multiple browsers testing )
-│               
-├── pom.xml         #(define the maven dependencies)
-└── Main TC.xlxs    #(contain the main test cases for automation)
-└── Test Data.xlxs   #(contain test data for the test cases if needed )
-└── TestNg.xml     #(to run using testng and define which testrunner class to be executed )
+│       ├── java/                    # Test files
+│       │   └── steps packages/      # Step definition classes
+│       │       └── steps definition classes (features steps classes and the hooks class that contain the tags needed like @before or @after, for each test cases execution)
+│       ├── resources/               # Resource files
+│       │   └── ui features/         # Feature files (contain the scenario declaration using Gherkins)
+│       │       └── feature files
+│       └── (test files)
+├── pom.xml                           # Maven configuration file
+├── Main TC.xlxs                      # Main test cases for automation
+├── Test Data.xlxs                    # Test data for the test cases if needed
+└── TestNg.xml                        # TestNG configuration file
 
 ## Notes 
 1. for Read excel data , you can find the function for get the excel data in Utils class with all the calls needed in the setup class for that data-driven testing.
